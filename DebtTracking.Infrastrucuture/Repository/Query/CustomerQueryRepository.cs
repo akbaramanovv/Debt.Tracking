@@ -7,7 +7,7 @@ using System.Data;
 
 namespace DebtTracking.Infrastrucuture.Repository.Query
 {
-    public class CustomerQueryRepository : QueryRepository<Customer>, ICustomerQueryRepository
+    public class CustomerQueryRepository : QueryRepository<Core.Entities.Customer>, ICustomerQueryRepository
     {
         public CustomerQueryRepository(IConfiguration configuration)
             : base(configuration)
@@ -15,7 +15,7 @@ namespace DebtTracking.Infrastrucuture.Repository.Query
 
         }
 
-        public async Task<IReadOnlyList<Customer>> GetAllAsync()
+        public async Task<IReadOnlyList<Core.Entities.Customer>> GetAllAsync()
         {
             try
             {
@@ -32,7 +32,7 @@ namespace DebtTracking.Infrastrucuture.Repository.Query
             }
         }
 
-        public async Task<Customer> GetByIdAsync(long id)
+        public async Task<Core.Entities.Customer> GetByIdAsync(long id)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace DebtTracking.Infrastrucuture.Repository.Query
 
                 using (var connection = CreateConnection())
                 {
-                    return (await connection.QueryFirstOrDefaultAsync<Customer>(query, parameters));
+                    return (await connection.QueryFirstOrDefaultAsync<Core.Entities.Customer>(query, parameters));
                 }
             }
             catch (Exception exp)
@@ -51,7 +51,7 @@ namespace DebtTracking.Infrastrucuture.Repository.Query
             }
         }
 
-        public async Task<Customer> GetCustomerByEmail(string email)
+        public async Task<Core.Entities.Customer> GetCustomerByEmail(string email)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace DebtTracking.Infrastrucuture.Repository.Query
 
                 using (var connection = CreateConnection())
                 {
-                    return (await connection.QueryFirstOrDefaultAsync<Customer>(query, parameters));
+                    return (await connection.QueryFirstOrDefaultAsync<Core.Entities.Customer>(query, parameters));
                 }
             }
             catch (Exception exp)

@@ -9,6 +9,6 @@ namespace DebtTracking.Infrastrucuture.Data.Context
 
         }
 
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Core.Entities.Customer> Customers { get; set; }
     }
 }
