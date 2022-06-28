@@ -1,8 +1,11 @@
+using DebtTracking.Application;
 using DebtTracking.Application.Handlers.CommandHandler.Customer;
+using DebtTracking.Core;
 using DebtTracking.Core.Repositories.Command;
 using DebtTracking.Core.Repositories.Command.Base;
 using DebtTracking.Core.Repositories.Query;
 using DebtTracking.Core.Repositories.Query.Base;
+using DebtTracking.Infrastrucuture;
 using DebtTracking.Infrastrucuture.Data.Context;
 using DebtTracking.Infrastrucuture.Repository.Command.Base;
 using DebtTracking.Infrastrucuture.Repository.Query;
@@ -20,17 +23,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DebtTrackingContext>(options =>
-{
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
-builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddMediatR(typeof(CreateCustomerHandler).GetTypeInfo().Assembly);
-builder.Services.AddScoped(typeof(IQueryRepository<>), typeof(QueryRepository<>));
-builder.Services.AddTransient<ICustomerQueryRepository, CustomerQueryRepository>();
-builder.Services.AddScoped(typeof(ICommandRepository<>), typeof(CommandRepository<>));
-builder.Services.AddTransient<ICustomerCommandRepository, CustomerCommandRepository>();
+builder.Services.AddCore();
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
