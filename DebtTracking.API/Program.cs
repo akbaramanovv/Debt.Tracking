@@ -1,18 +1,7 @@
+using DebtTracking.API.Common.Middlewares;
 using DebtTracking.Application;
-using DebtTracking.Application.Handlers.CommandHandler.Customer;
 using DebtTracking.Core;
-using DebtTracking.Core.Repositories.Command;
-using DebtTracking.Core.Repositories.Command.Base;
-using DebtTracking.Core.Repositories.Query;
-using DebtTracking.Core.Repositories.Query.Base;
 using DebtTracking.Infrastrucuture;
-using DebtTracking.Infrastrucuture.Data.Context;
-using DebtTracking.Infrastrucuture.Repository.Command.Base;
-using DebtTracking.Infrastrucuture.Repository.Query;
-using DebtTracking.Infrastrucuture.Repository.Query.Base;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +24,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//custom Exception handler middleware
+app.UseCustomExceptionHandler();
 
 app.UseHttpsRedirection();
 

@@ -21,10 +21,8 @@ namespace DebtTracking.Infrastrucuture.Repository.Query
             {
                 var query = "SELECT * FROM CUSTOMERS";
 
-                using (var connection = CreateConnection())
-                {
-                    return (await connection.QueryAsync<Customer>(query)).ToList();
-                }
+                using var connection = CreateConnection();
+                return (await connection.QueryAsync<Customer>(query)).ToList();
             }
             catch (Exception exp)
             {
@@ -40,10 +38,8 @@ namespace DebtTracking.Infrastrucuture.Repository.Query
                 var parameters = new DynamicParameters();
                 parameters.Add("Id", id, DbType.Int64);
 
-                using (var connection = CreateConnection())
-                {
-                    return (await connection.QueryFirstOrDefaultAsync<Core.Entities.Customer>(query, parameters));
-                }
+                using var connection = CreateConnection();
+                return (await connection.QueryFirstOrDefaultAsync<Core.Entities.Customer>(query, parameters));
             }
             catch (Exception exp)
             {
@@ -59,10 +55,8 @@ namespace DebtTracking.Infrastrucuture.Repository.Query
                 var parameters = new DynamicParameters();
                 parameters.Add("Email", email, DbType.String);
 
-                using (var connection = CreateConnection())
-                {
-                    return (await connection.QueryFirstOrDefaultAsync<Core.Entities.Customer>(query, parameters));
-                }
+                using var connection = CreateConnection();
+                return (await connection.QueryFirstOrDefaultAsync<Core.Entities.Customer>(query, parameters));
             }
             catch (Exception exp)
             {

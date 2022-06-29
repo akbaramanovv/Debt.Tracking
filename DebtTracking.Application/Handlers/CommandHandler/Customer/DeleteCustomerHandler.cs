@@ -1,4 +1,5 @@
 ﻿using DebtTracking.Application.Commands.Customer;
+using DebtTracking.Core.Constants;
 using DebtTracking.Core.Repositories.Command;
 using DebtTracking.Core.Repositories.Query;
 using MediatR;
@@ -28,7 +29,7 @@ namespace DebtTracking.Application.Handlers.CommandHandler.Customer
                 throw (new ApplicationException(exp.Message));
             }
 
-            return "Customer information has been deleted!";
+            return Messages.CustomerDeleted;
         }
     }
 }
