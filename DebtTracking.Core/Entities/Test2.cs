@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DebtTracking.Infrastrucuture
+﻿namespace DebtTracking.Infrastrucuture
 {
     public partial class Test2
     {

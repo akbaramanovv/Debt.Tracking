@@ -1,4 +1,3 @@
-using DebtTracking.API.Common.Middlewares;
 using DebtTracking.Application;
 using DebtTracking.Core;
 using DebtTracking.Infrastrucuture;
@@ -26,7 +25,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //custom Exception handler middleware
-app.UseCustomExceptionHandler();
+//app.UseCustomExceptionHandler();
 
 app.UseHttpsRedirection();
 

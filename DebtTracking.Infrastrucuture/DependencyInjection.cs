@@ -18,6 +18,7 @@ namespace DebtTracking.Infrastrucuture
             services.AddDbContext<DebtTrackingContext>(options =>
             {
                 options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(configuration.GetConnectionString("ConnectionWithTiberium"));
             });
             services.AddTransient(typeof(IQueryRepository<>), typeof(QueryRepository<>));
             services.AddTransient<ICustomerQueryRepository, CustomerQueryRepository>();
